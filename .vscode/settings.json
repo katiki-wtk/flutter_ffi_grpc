@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "xstring": "cpp"
+    },
+    "cmake.sourceDirectory": "C:/Dev/cpp/flutter_ffi/windows/flutter"
+}
