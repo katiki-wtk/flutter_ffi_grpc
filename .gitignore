@@ -46,5 +46,4 @@ app.*.map.json
 
 /native/build
 /lib/src/generated/*.dart
-lib/*.dart
 
