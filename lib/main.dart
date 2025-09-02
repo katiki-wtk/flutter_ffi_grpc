@@ -1,8 +1,20 @@
+import 'dart:async';
 import "package:flutter/material.dart";
+import 'package:flutter/widgets.dart';
 
 import "ffi_person_page.dart";
 
-void main() => runApp(const MinimalApp());
+void main() {
+  Timer.periodic(const Duration(seconds: 1), (_) => debugPrint('tick'));
+
+  runApp(
+    Listener(
+      onPointerHover: (e) => debugPrint('hover ${e.position}'),
+      onPointerMove: (e) => debugPrint('move  ${e.position}'),
+      child: const MinimalApp(),
+    ),
+  );
+}
 
 class MinimalApp extends StatelessWidget {
   const MinimalApp({super.key});
