@@ -1,17 +1,21 @@
 import 'dart:async';
+import 'package:provider/provider.dart';
 import "package:flutter/material.dart";
-import 'package:flutter/widgets.dart';
 
+import "grpc_config.dart";
 import "ffi_person_page.dart";
 
-void main() {
+Future<void> main() async {
   Timer.periodic(const Duration(seconds: 1), (_) => debugPrint('tick'));
+
+  WidgetsFlutterBinding.ensureInitialized();
+  final cfg = await GrpcConfig.load();
 
   runApp(
     Listener(
       onPointerHover: (e) => debugPrint('hover ${e.position}'),
       onPointerMove: (e) => debugPrint('move  ${e.position}'),
-      child: const MinimalApp(),
+      child: Provider<GrpcConfig>.value(value: cfg, child: const MinimalApp()),
     ),
   );
 }
@@ -23,7 +27,7 @@ class MinimalApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       theme: ThemeData(useMaterial3: true),
       darkTheme: ThemeData(useMaterial3: true, brightness: Brightness.dark),
       home: const FFIPersonBrowser(),

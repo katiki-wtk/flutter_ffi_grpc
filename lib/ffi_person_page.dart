@@ -109,15 +109,9 @@ class _FFIPersonBrowserState extends State<FFIPersonBrowser> {
                       SizedBox(width: 12),
                       FilledButton.icon(
                         onPressed: () {
-                          Navigator.of(context).push(
-                            _qmlRoute(
-                              const GrpcPersonBrowser(
-                                host: 'localhost',
-                                port: 50051,
-                                useTls: false,
-                              ),
-                            ),
-                          );
+                          Navigator.of(
+                            context,
+                          ).push(_qmlRoute(const GrpcPersonBrowser()));
                         },
                         icon: Icon(Icons.swap_horiz),
                         label: Text('Backend GRPC'),
